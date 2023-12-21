@@ -1,0 +1,76 @@
+<% layout('/layouts/boilerplate') -%>
+
+    <body>
+
+        <div class="row mt-4">
+            <div class="col-8 offset-2">
+                <h3>Edit your listing</h3>
+                <br>
+                <form action="/listings/<%= listing._id %>?_method=PUT" method="post" class="needs-validation"
+                    novalidate enctype="multipart/form-data">
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" placeholder="Enter title" name="listing[title]" value="<%= listing.title %>"
+                            class="form-control" id="title" required>
+                        <div class="invalid-feedback">
+                            Please enter valid title
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listing[description]" cols="20" rows="4" placeholder="Enter description "
+                            class="form-control" required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">
+                            Please enter short description
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        Original listing image <br>
+                        <img src="<%= originalImageUrl %>" alt="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload Image</label>
+                        <input type="file" name="listing[image]" class="form-control">
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Price should be more than 100
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" name="listing[country]" class="form-control"
+                                value="<%= listing.country %>" required>
+                            <div class="invalid-feedback">
+                                Country should be valid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" class="form-control" value="<%= listing.location %>"
+                            required>
+                        <div class="invalid-feedback">
+                            Location should be valid
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark add-btn">Edit</button>
+                </form>
+                <br><br>
+            </div>
+        </div>
+        <!-- listing[title] will create a key value pair in form  js objects which will be sent in req body. -->
+    </body>

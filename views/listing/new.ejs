@@ -1,0 +1,64 @@
+<% layout('/layouts/boilerplate') -%>
+
+    <body>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h3>Create a new listing</h3>
+                <br>
+                <form action="/listings" method="post" class="needs-validation" novalidate
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" placeholder="Enter title" name="listing[title]" class="form-control"
+                            id="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listing[description]" cols="20" rows="5" placeholder="Enter description "
+                            class="form-control" required></textarea>
+                        <div class="invalid-feedback">
+                            Please enter short description
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Uploag Image</label>
+                        <input type="file" placeholder="Add image" name="listing[image]" class="form-control" required>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" placeholder="1200" name="listing[price]" class="form-control" required>
+                            <div class="invalid-feedback">
+                                Price should be more than 100
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" placeholder="India" name="listing[country]" class="form-control"
+                                required>
+                            <div class="invalid-feedback">
+                                Country should be valid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" placeholder="Patna,Bihar" name="listing[location]" class="form-control"
+                            required>
+                        <div class="invalid-feedback">
+                            Location should be valid
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark add-btn">Add</button>
+                </form>
+                <br><br>
+            </div>
+        </div>
+        <!-- listing[title] will create a key value pair in form  js objects which will be sent in req body. -->
+    </body>
